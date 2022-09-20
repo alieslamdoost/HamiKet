@@ -1,0 +1,22 @@
+.loginsignin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    margin: 24px 0;
+    width: 420px;
+    height: 520px;
+    background-color: #f8f8f8;
+    color: #363636;
+    border-radius: 12px;
+    border: 1px solid #dadada
+}
+
+
+
+.modal {
+    background-color: #f8f8f8;
+    color: #363636;
+    border-radius: 12px;
+    border: 1px solid #dadada
+}
