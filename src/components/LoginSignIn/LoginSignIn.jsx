@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import "../../styles/Login.css";
 import { useNavigate } from "react-router-dom";
-import {  Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import { BsFillEyeFill } from "react-icons/bs";
 function LoginSignIn(props) {
   const navigate = useNavigate();
   const [isPassword, setIsPassword] = useState(true);
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
+
+  const isLogin = () => {
+    login.username.length > 0 && login.password.length > 0
+      ? navigate("/Panel")
+      : alert("لطفا یوزر و رمزی وارد کنید");
+  };
 
   return (
     <Row>
@@ -30,7 +40,9 @@ function LoginSignIn(props) {
                   type="text"
                   placeholder="example@port.com"
                   name="username"
-                  required
+                  onChange={(e) =>
+                    setLogin({ ...login, username: e.target.value })
+                  }
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -40,7 +52,9 @@ function LoginSignIn(props) {
                     type={isPassword ? "password" : "text"}
                     placeholder="*******"
                     name="password"
-                    required
+                    onChange={(e) =>
+                      setLogin({ ...login, password: e.target.value })
+                    }
                   />
                   <div
                     role="button"
@@ -56,13 +70,7 @@ function LoginSignIn(props) {
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="مرا به خاطر بسپار" />
               </Form.Group>
-              <Button
-                variant="outline-warning"
-                type="submit"
-                onClick={() => {
-                  navigate("/Panel");
-                }}
-              >
+              <Button variant="outline-warning" type="submit" onClick={isLogin}>
                 ورود
               </Button>
             </Form>
